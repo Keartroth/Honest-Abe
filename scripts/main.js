@@ -1,1 +1,5 @@
-console.log("Welcome to the main module")
+import { getPoliticians } from "./politician/politicianProvider.js";
+import { PoliticianList } from "./politician/PoliticianList.js";
+
+getPoliticians()
+    .then(PoliticianList)
