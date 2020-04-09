@@ -9,5 +9,6 @@ const render = (politiciansArray) => {
 
 export const PoliticianList = () => {
     const allThePolititians = usePoliticians();
+    contentTarget.innerHTML = "<h3>List of Politicians</h3>"
     render(allThePolititians);
 }
