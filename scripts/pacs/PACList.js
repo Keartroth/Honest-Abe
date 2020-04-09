@@ -20,9 +20,11 @@ export const PACList = () => {
     allThePACs.map(p => {
         p.donors = [];
         allTheCorporateDonations.filter(d => d.pacId === p.id).map(object => {
-            p.donors.push(object)
-            let corporation = allTheCompanies.find(c => c.id === object.corporationId)
-            object.name = corporation.company
+            let donorObject ={};
+            let corporation = allTheCompanies.find(c => c.id === object.corporationId);
+            donorObject.name = corporation.company;
+            donorObject.amount = object.amount;
+            p.donors.push(donorObject);
         })
     })
     render(allThePACs);

@@ -5,8 +5,11 @@ import { CompanyList } from "./companies/CompanyList.js";
 import { getPACs } from "./pacs/pacProvider.js";
 import { PACList } from "./pacs/PACList.js";
 import { getCorporateDonations } from "./pacs/corporationDonationProvider.js";
+import { getPACDonations } from "./politician/pacDonationsProvider.js";
 
 getPoliticians()
+    .then(getPACs)
+    .then(getPACDonations)
     .then(PoliticianList)
 
 getCompanies()

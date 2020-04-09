@@ -8,6 +8,17 @@ export const Politician = (politicianObject) => {
                 <div>Age: ${politicianObject.age}</div>
                 <div>Represents: ${politicianObject.district}</div>
             </div>
+            <div class="pac__donations">
+                <h4>PAC Donations to ${politicianObject.name.first} ${politicianObject.name.last}</h4>
+            <ul>
+                ${
+                    politicianObject.donors.map(d => {
+                        return`
+                        <li>${d.name} (${d.amount})</li>`
+                    }).join("")
+                }
+            </ul>
+        </div>
         </section>
     `
 }
