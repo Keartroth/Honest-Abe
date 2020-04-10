@@ -1,3 +1,4 @@
+//Function that returns an HTML representation of a PAC with a list of all corporate donors.
 export const PAC = (PACObject) => {
     return`
         <section class="pac">

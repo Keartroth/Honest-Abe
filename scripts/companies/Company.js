@@ -1,3 +1,4 @@
+//Function that returns an HTML representation of a company.
 export const Company = (companyObject) => {
     return`
         <section class="corporation">
