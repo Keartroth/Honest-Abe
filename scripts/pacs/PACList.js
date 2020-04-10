@@ -4,6 +4,7 @@ import { PAC } from "./PAC.js";
 import { useCompanies } from "../companies/companyProvider.js";
 
 const contentTarget = document.querySelector("#pacs");
+const contentHeaderTarget = document.querySelector("#pacsHeader");
 
 const render = (arrayOfPACs) => {
     contentTarget.innerHTML += arrayOfPACs.map(p => {
@@ -16,7 +17,7 @@ export const PACList = () => {
     const allTheCorporateDonations = useCorporateDonations();
     const allTheCompanies = useCompanies();
 
-    contentTarget.innerHTML = "<h3>List of PACs</h3>"
+    contentHeaderTarget.innerHTML = "<h3>List of PACs</h3>"
     allThePACs.map(p => {
         p.donors = [];
         allTheCorporateDonations.filter(d => d.pacId === p.id).map(object => {
