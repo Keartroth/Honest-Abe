@@ -2,6 +2,7 @@ import { useCompanies } from "./companyProvider.js";
 import { Company } from "./Company.js";
 
 const contentTarget = document.querySelector("#corporations");
+const contentHeaderTarget = document.querySelector("#corporationsHeader");
 
 const render = (arrayOfCompanies) => {
     contentTarget.innerHTML += arrayOfCompanies.map(c => {
@@ -11,6 +12,6 @@ const render = (arrayOfCompanies) => {
 
 export const CompanyList = () => {
     const allTheCompanies = useCompanies();
-    contentTarget.innerHTML = "<h3>List of Politically Infuential Companies</h3>"
+    contentHeaderTarget.innerHTML = "<h3>List of Politically Infuential Companies</h3>"
     render(allTheCompanies);
 }

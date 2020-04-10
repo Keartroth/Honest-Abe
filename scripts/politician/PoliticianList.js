@@ -10,6 +10,7 @@ import { useCompanies } from "../companies/companyProvider.js";
 import { useCorporateDonations } from "../pacs/corporationDonationProvider.js";
 
 const contentTarget = document.querySelector("#politicians");
+const contentHeaderTarget = document.querySelector("#politicianHeader");
 
 const render = (politiciansArray) => {
     contentTarget.innerHTML += politiciansArray.map(p => Politician(p)).join("")
@@ -26,7 +27,7 @@ export const PoliticianList = () => {
     const allTheCompanies = useCompanies();
     const allTheCorporateDonations = useCorporateDonations();
 
-    contentTarget.innerHTML = "<h3>List of Politicians</h3>"
+    contentHeaderTarget.innerHTML = "<h3>List of Politicians</h3>"
     allThePolititians.map(p => {
         p.donors = [];
         p.bills = [];
