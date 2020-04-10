@@ -15,6 +15,7 @@ const contentTarget = document.querySelector("#politicians");
 // DOM reference for an element with the id of politicianHeader.
 const contentHeaderTarget = document.querySelector("#politicianHeader");
 
+// A function that checks the length of an array and returns different strings depending on the length.
 export const checkingBillsLength = (politicianObject) => {
     if (politicianObject.bills.length === 0) {
         return`
@@ -31,6 +32,39 @@ export const checkingBillsLength = (politicianObject) => {
     }
 }
 
+// A function that checks the length of an array and returns different strings depending on the length.
+export const checkingDonorsLength = (politicianObject) => {
+    if (politicianObject.donors.length === 0) {
+        return`
+        <p>No donations from any PACs</p>`
+    } else {
+        return`
+        ${
+            politicianObject.donors.map(d => {
+            return`
+            <li>${d.name}   ( $${d.amount} )</li>`
+            }).join("")
+        }
+        `
+    }
+}
+
+// A function that checks the length of an array and returns different strings depending on the length.
+export const checkingCorporationsLength = (politicianObject) => {
+    if (politicianObject.corporations.length === 0) {
+        return`
+        <p>No corporations that share interests with any bills sponsored by this politician have contributed to PACs that have contributed to this politician</p>`
+    } else {
+        return`
+        ${
+            politicianObject.corporations.map(d => {
+            return`
+            <li>${d.company}</li>`
+            }).join("")
+        }
+        `
+    }
+}
 
 /*
 * A function that maps over an array and returns a string of HTML utilizing the
