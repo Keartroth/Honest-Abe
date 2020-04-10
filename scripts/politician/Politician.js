@@ -1,3 +1,10 @@
+import { checkingBillsLength } from "./PoliticianList.js"
+
+/*
+* Function that returns an HTML representation of a politician with a list of all bills, PAC donors,
+* and all corporations that share the same interests as the politician's legislation,
+* and have contributed to PACs that have contributed to the politician.
+*/
 export const Politician = (politicianObject) => {
     return `
         <section class="politician">
@@ -12,10 +19,7 @@ export const Politician = (politicianObject) => {
                 <h4>Sponsored Bills</h4>
                 <div>
                     ${
-                        politicianObject.bills.map(d => {
-                            return`
-                            <li>${d.name}   ( ${d.interestName} )</li>`
-                        }).join("")
+                        checkingBillsLength(politicianObject)
                     }
                 </div>
             </div>
