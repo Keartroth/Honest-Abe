@@ -1,7 +1,3 @@
-import { checkBillsLength } from "./checkBillsLength.js"
-import { checkDonorsLength } from "./checkDonorsLength.js"
-import { checkCorporationsLength } from "./checkCorporationsLength.js"
-
 /*
 * Function that returns an HTML representation of a politician with a list of all bills, PAC donors,
 * and all corporations that share the same interests as the politician's legislation,
@@ -21,7 +17,12 @@ export const Politician = (politicianObject) => {
                 <h4>Sponsored Bills</h4>
                 <div>
                     ${
-                        checkBillsLength(politicianObject)
+                        politicianObject.bills.length === 0 
+                        ? `<p>No sponsored bills</p>` 
+                        : politicianObject.bills.map(d => {
+                            return`
+                            <li>${d.name}   ( ${d.interestName} )</li>`
+                        }).join("")
                     }
                 </div>
             </div>
@@ -29,7 +30,12 @@ export const Politician = (politicianObject) => {
                 <h4>PAC Donations to ${politicianObject.name.first} ${politicianObject.name.last}</h4>
                 <ul>
                     ${
-                        checkDonorsLength(politicianObject)
+                        politicianObject.donors.length === 0 
+                        ? `<p>No donations from any PACs</p>`
+                        : politicianObject.donors.map(d => {
+                            return`
+                            <li>${d.name}   ( $${d.amount} )</li>`
+                            }).join("")
                     }
                 </ul>
             </div>
@@ -37,7 +43,13 @@ export const Politician = (politicianObject) => {
                 <h4>Influencing Corporations</h4>
                 <ul>
                     ${
-                        checkCorporationsLength(politicianObject)
+                        politicianObject.corporations.length === 0 
+                        ? `<p>No corporations that share interests with any bills sponsored by this 
+                        politician have contributed to PACs that have contributed to this politician</p>`
+                        : politicianObject.corporations.map(d => {
+                            return`
+                            <li>${d.company}</li>`
+                            }).join("")
                     }
                 </ul>
             </div>
