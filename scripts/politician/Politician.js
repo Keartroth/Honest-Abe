@@ -1,4 +1,4 @@
-import { checkingBillsLength } from "./PoliticianList.js"
+import { checkingBillsLength, checkingDonorsLength, checkingCorporationsLength } from "./PoliticianList.js"
 
 /*
 * Function that returns an HTML representation of a politician with a list of all bills, PAC donors,
@@ -27,22 +27,16 @@ export const Politician = (politicianObject) => {
                 <h4>PAC Donations to ${politicianObject.name.first} ${politicianObject.name.last}</h4>
                 <ul>
                     ${
-                        politicianObject.donors.map(d => {
-                        return`
-                        <li>${d.name}   ( $${d.amount} )</li>`
-                        }).join("")
+                        checkingDonorsLength(politicianObject)
                     }
                 </ul>
             </div>
             <div class="politician__influencers">
                 <h4>Influencing Corporations</h4>
                 <ul>
-                ${
-                    politicianObject.corporations.map(d => {
-                    return`
-                    <li>${d.company}</li>`
-                    }).join("")
-                }
+                    ${
+                        checkingCorporationsLength(politicianObject)
+                    }
                 </ul>
             </div>
         </section>
