@@ -1,4 +1,6 @@
-import { checkingBillsLength, checkingDonorsLength, checkingCorporationsLength } from "./PoliticianList.js"
+import { checkBillsLength } from "./checkBillsLength.js"
+import { checkDonorsLength } from "./checkDonorsLength.js"
+import { checkCorporationsLength } from "./checkCorporationsLength.js"
 
 /*
 * Function that returns an HTML representation of a politician with a list of all bills, PAC donors,
@@ -19,7 +21,7 @@ export const Politician = (politicianObject) => {
                 <h4>Sponsored Bills</h4>
                 <div>
                     ${
-                        checkingBillsLength(politicianObject)
+                        checkBillsLength(politicianObject)
                     }
                 </div>
             </div>
@@ -27,7 +29,7 @@ export const Politician = (politicianObject) => {
                 <h4>PAC Donations to ${politicianObject.name.first} ${politicianObject.name.last}</h4>
                 <ul>
                     ${
-                        checkingDonorsLength(politicianObject)
+                        checkDonorsLength(politicianObject)
                     }
                 </ul>
             </div>
@@ -35,7 +37,7 @@ export const Politician = (politicianObject) => {
                 <h4>Influencing Corporations</h4>
                 <ul>
                     ${
-                        checkingCorporationsLength(politicianObject)
+                        checkCorporationsLength(politicianObject)
                     }
                 </ul>
             </div>
